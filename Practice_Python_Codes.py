@@ -19,16 +19,45 @@
 
 
 #Practicing __init__ method
-
 class User:
-    def __init__(self, name, email, password):
+    count = 0 #class variable
+
+    def __init__(self, name, email, password): #__init__ automatically called when each user instance is created
         self.name = name
         self.email = email
         self.password = password
 
-user1 = User("Jungwoo Lee", "jwlee2020@gmail.com", "205527")
-user2 = User("Sanggil Jeong", "dopa1993@gmail.com", "350000")
-print(user1.name, user1.email, user1.password)
-print(user2.name)
+        User.count += 1
+
+    def __str__(self): #double underscore method (dunder method), __str__ is automatically called when function print() is called
+        return "Username: {}, Email: {}, Password: *****".format(self.name, self.email)
 
 
+user1 = User("Paul Lee", "lee18@naver.com", "12945")
+user2 = User("Tanaka Akihiro", "Aki4637@yahoo.jp", "48314")
+user3 = User("Shaun Martin", "ShaunGuitar@gmail.com", "38462")
+
+user1.count = 5 #this is not a class variable. this is adding a new instance variable with the same name "count"
+#User.count = 5 redesignates class variable "count"
+
+print(User.count) #prints number of instances
+print(user1.count) #instance variable
+print(user2.count) #class variable
+print(user3.count) #class variable
+
+#Example of decorator function
+#Decorator is useful for indicating starts and ends of multiple functions
+
+def add_print_to(original):
+    def wrapper():
+        print("Start of function")
+        original()
+        print("End of function")
+    return wrapper
+
+@add_print_to
+def print_hello():
+    print("Hello Japan")
+#cf) add_print_to(print_hello) == wrapper
+
+print_hello()
