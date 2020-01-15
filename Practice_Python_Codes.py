@@ -101,3 +101,38 @@ user1.number_of_users()
 #calling static method
 print(User.is_valid_email(user1.name))
 print(User.is_valid_email(user1.email))
+
+#useful functions in python
+
+#1) min, max
+print(max(2, 5, 8))
+print(min(2, 5, 8))
+
+#2) sum
+int_list = [1, 2, 3, 4, 5]
+int_tuple = (1, 3, 5, 6, 8)
+int_dict = {1: "one", 2: "two", 3: "three"} #key : value
+print(sum(int_list))
+print(sum(int_tuple))
+print(sum(int_dict)) # returns sum of keys
+
+#3) ternary expression
+condition = True
+condition_string = "nice" if condition else "not nice"
+print(condition_string)
+
+#4) list comprehension
+int_list1 = [1, 2, 3, 4, 5]
+squares1 = []
+for x in int_list:
+    squares1.append(x**2)
+
+int_list2 = [1, 2, 3, 4, 5]
+squares2 = [x**2 for x in int_list2]
+
+#5) zfill
+print("1".zfill(6))
+print("333".zfill(2))
+print("a".zfill(8))
+print("ab".zfill(8))
+print("abc".zfill(8))
